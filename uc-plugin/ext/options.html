@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>uc Key Management</title>
+
+    <script src="jquery/jquery-2.1.0.min.js"></script>
+    <script src="sjcl.js"></script>
+    <script src="ethereum.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/uc-colors.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <script src="options.js"> </script>
+
+
+</head>
+<body>
+
+<div id="key-dialog-modal" class="modal">
+
+    <div class="modal-fade"></div>
+
+    <form id="key-dialog" class="dialog modal-element">
+        <h2 class="new-key dialog-area">Add new key</h2>
+        <h2 id="edit-key-title" class="edit-key dialog-area"><span class="uc-key uc-color-0"></span><span id="edit-key-domain"></span></h2>
+        <h2 class="import-key dialog-area">Import key</h2>
+
+        <div class="new-key dialog-area">
+            <p class="hint">uc will activate on this webpage.</p>
+            <label for="key-dialog-url">Domain URL</label>
+            <input id="key-dialog-url" type="text" name="key-url" value="" placeholder="http://" />
+        </div>
+
+        <div class="new-key edit-key dialog-area">
+            <p class="hint">The name needs to be unique for this url.</p>
+            <label for="key-dialog-name">Key Name</label>
+            <input id="key-dialog-name" type="text" name="key-name" value=""/>
+        </div>
+
+        <div class="new-key edit-key key-color-selection dialog-area">
+            <p class="label">Color</p>
+            <div class="input">
+                <input type="radio" name="key-color" id="key-dialog-color0"/><label for="key-dialog-color0"><span class="uc-key uc-color-0"></span></label>
+                <input type="radio" name="key-color" id="key-dialog-color1"/><label for="key-dialog-color1"><span class="uc-key uc-color-1"></span></label>
+                <input type="radio" name="key-color" id="key-dialog-color2"/><label for="key-dialog-color2"><span class="uc-key uc-color-2"></span></label>
+                <input type="radio" name="key-color" id="key-dialog-color3"/><label for="key-dialog-color3"><span class="uc-key uc-color-3"></span></label>
+                <input type="radio" name="key-color" id="key-dialog-color4"/><label for="key-dialog-color4"><span class="uc-key uc-color-4"></span></label>
+                <input type="radio" name="key-color" id="key-dialog-color5"/><label for="key-dialog-color5"><span class="uc-key uc-color-5"></span></label>
+                <input type="radio" name="key-color" id="key-dialog-color6"/><label for="key-dialog-color6"><span class="uc-key uc-color-6"></span></label>
+            </div>
+        </div>
+
+        <div class="new-key edit-key dialog-area">
+            <p class="hint">Use this as a reminder with whom you share this key.</p>
+            <label for="key-dialog-note">Note</label>
+            <textarea id="key-dialog-note" name="key-name"></textarea>
+        </div>
+
+        <div class="new-key edit-key dialog-area">
+            <p class="hint">Type a secret phrase here to see if text is encrypted. </p>
+            <label for="key-dialog-passphrase">Passphrase</label>
+            <input id="key-dialog-passphrase" type="text" name="key-name" value=""/>
+        </div>
+
+        <div class="new-key edit-key dialog-area">
+            <p class="hint">This key will be activated first for this url.</p>
+            <label for="key-dialog-default">Default Key</label>
+            <input id="key-dialog-default" type="checkbox">
+        </div>
+
+        <div class="new-key edit-key dialog-area">
+            <p class="hint">Share this with your friend or group.</p>
+            <p class="label">Export String</p>
+            <div id="key-dialog-export" class="input export-string">&nbsp;</div>
+        </div>
+
+
+        <div class="import-key dialog-area">
+            <p class="hint">Paste in your friend's exported key string.</p>
+            <label for="key-dialog-import">Key String</label>
+            <input id="key-dialog-import" type="text" name="key-name" value="" placeholder="" />
+        </div>
+
+        <div class="dialog-buttons">
+            <span id="key-dialog-delete" class="delete-button dialog-area edit-key"></span>
+            <span id="key-dialog-cancel" class="button">Cancel</span>
+            <button id="key-dialog-ok" type="submit" class="button">OK</button>
+        </div>
+
+    </form>
+
+</div>
+
+
+<div id="dialog-box" class="modal">
+
+    <div class="modal-fade"></div>
+
+    <div id="ok-cancel-dialog" class="dialog modal-element">
+
+        <div class="dialog-content">
+
+        </div>
+
+        <div class="dialog-buttons">
+            <button id="dialog-cancel" class="button">Cancel</button>
+            <button id="dialog-ok" class="button">OK</button>
+        </div>
+    </div>
+
+    <div id="close-dialog" class="dialog modal-element">
+
+        <div class="dialog-content">
+
+        </div>
+
+        <div class="dialog-buttons">
+            <button id="dialog-close" class="button">Close</button>
+        </div>
+    </div>
+
+</div>
+
+
+<button id="new-key-button" class="button">New Key</button>
+<button id="import-key-button" class="button">Import</button>
+
+<div id="domain-list" class="keys-table-wrapper">
+    <table class="keys-table">
+    </table>
+</div>
+
+</body>
+</html>

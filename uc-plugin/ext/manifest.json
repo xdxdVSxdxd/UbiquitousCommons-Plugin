@@ -1,0 +1,24 @@
+{
+	"manifest_version": 2,
+	"name": "Ubiquitous Commons",
+	"version": "0.1.1",
+
+	"content_scripts": [
+		{
+			"matches": ["<all_urls>"],
+			"js": ["uc.js"],
+			"run_at": "document_start",
+			"all_frames": true
+		}
+	],
+
+	"background": {
+		"scripts": ["background.js"]
+	},
+
+	"options_page": "options.html",
+	"permissions": ["storage"],
+	"web_accessible_resources": [
+		"Spritesheet-01.png"
+	]
+}
